@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Twitch Streams</title>
+    <style>
+        .stream-container {
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid #ccc;
+            vertical-align: top;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+</head>
+<body>
+
+<div id="twitch-streams">
+    <p>NOchat support currently </p>
+<p>xisuma,ChosenArchitect</p>
+    <!-- Channel 1 -->
+    <div class="stream-container">
+        <input type="text" id="channel1" placeholder="Enter channel name" />
+        <button onclick="changeChannel(1)">Change Channel</button>
+        <div id="twitch-embed1" class="hide"></div>
+    </div>
+
+    <!-- Channel 2 -->
+    <div class="stream-container">
+        <input type="text" id="channel2" placeholder="Enter channel name" />
+        <button onclick="changeChannel(2)">Change Channel</button>
+        <div id="twitch-embed2" class="hide"></div>
+    </div>
+
+    <!-- Channel 3 -->
+    <div class="stream-container">
+        <input type="text" id="channel3" placeholder="Enter channel name" />
+        <button onclick="changeChannel(3)">Change Channel</button>
+        <div id="twitch-embed3" class="hide"></div>
+    </div>
+
+    <!-- Channel 4 -->
+    <div class="stream-container">
+        <input type="text" id="channel4" placeholder="Enter channel name" />
+        <button onclick="changeChannel(4)">Change Channel</button>
+        <div id="twitch-embed4" class="hide"></div>
+    </div>
+
+    <!-- Channel 5 -->
+    <div class="stream-container">
+        <input type="text" id="channel5" placeholder="Enter channel name" />
+        <button onclick="changeChannel(5)">Change Channel</button>
+        <div id="twitch-embed5" class="hide"></div>
+    </div>
+
+    <!-- Channel 6 -->
+    <div class="stream-container">
+        <input type="text" id="channel6" placeholder="Enter channel name" />
+        <button onclick="changeChannel(6)">Change Channel</button>
+        <div id="twitch-embed6" class="hide"></div>
+    </div>
+
+    <!-- Channel 7 -->
+    <div class="stream-container">
+        <input type="text" id="channel7" placeholder="Enter channel name" />
+        <button onclick="changeChannel(7)">Change Channel</button>
+        <div id='twitch-embed7' class='hide'></div> 
+    </div>
+
+    <!-- Channel 8 -->
+    <div class='stream-container'>    
+      	<input type='text' id='channel8' placeholder='Enter channel name' />    
+      	<button onclick='changeChannel(8)'>Change Channel</button>    
+      	<div id='twitch-embed8' class='hide'></div> 
+  	</div> 
+
+</div>
+
+<script type='text/javascript'>
+// Initialize players
+var players = [];
+function initPlayer(playerNumber, channel) {
+    var options = {
+        channel: channel,
+        width: 700,
+        height: 500,
+        parent: ["localhost"] // Add your domain here
+    };
+    
+    players[playerNumber] = new Twitch.Player("twitch-embed" + playerNumber, options);
+    
+    players[playerNumber].addEventListener(Twitch.Player.READY, function() {
+        players[playerNumber].addEventListener(Twitch.Player.ONLINE, function() {
+            document.getElementById("twitch-embed" + playerNumber).classList.remove('hide');
+        });
+        
+        players[playerNumber].addEventListener(Twitch.Player.OFFLINE, function() {
+            document.getElementById("twitch-embed" + playerNumber).classList.add('hide');
+        });
+    });
+}
+
+// Initialize all players with default channels
+initPlayer(1, "ChosenArchitect");
+initPlayer(2, "xisuma");
+initPlayer(3, "KookieKiku");
+initPlayer(4, "faith");
+initPlayer(5, "streamer5");
+initPlayer(6, "streamer6");
+initPlayer(7, "streamer7");
+initPlayer(8, "streamer8");
+
+// Change channel function
+function changeChannel(playerNumber) {
+    var channelInput = document.getElementById("channel" + playerNumber).value.trim();
+    
+    if (channelInput) {
+         // Change the player channel
+         players[playerNumber].setChannel(channelInput);
+     } else {
+         alert("Please enter a valid channel name.");
+     }
+}
+</script>
+
+</body>     
+</html>     

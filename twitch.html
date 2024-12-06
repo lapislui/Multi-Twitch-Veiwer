@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Twitch Streams</title>
+    <style>
+        .stream-container {
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+</head>
+<body>
+
+<div id="twitch-streams">
+    <div class="stream-container">
+        <div id="twitch-embed1" class="hide"></div>
+        <script type="text/javascript">
+            var options1 = {
+                channel: "philza", // Replace with the first streamer's username
+                width: 700,
+                height: 500,
+                parent: ["localhost"] // Add your domain here
+            };
+            var player1 = new Twitch.Player("twitch-embed1", options1);
+            player1.addEventListener(Twitch.Player.READY, function() {
+                player1.addEventListener(Twitch.Player.ONLINE, function() {
+                    document.getElementById("twitch-embed1").classList.remove('hide');
+                });
+                player1.addEventListener(Twitch.Player.OFFLINE, function() {
+                    document.getElementById("twitch-embed1").classList.add('hide');
+                });
+            });
+        </script>
+    </div>
+
+    <div class="stream-container">
+        <div id="twitch-embed2" class="hide"></div>
+        <script type="text/javascript">
+            var options2 = {
+                channel: "faith", // Replace with the second streamer's username
+                width: 700,
+                height: 500,
+                parent: ["localhost"] // Add your domain here
+            };
+            var player2 = new Twitch.Player("twitch-embed2", options2);
+            player2.addEventListener(Twitch.Player.READY, function() {
+                player2.addEventListener(Twitch.Player.ONLINE, function() {
+                    document.getElementById("twitch-embed2").classList.remove('hide');
+                });
+                player2.addEventListener(Twitch.Player.OFFLINE, function() {
+                    document.getElementById("twitch-embed2").classList.add('hide');
+                });
+            });
+        </script>
+    </div>
+
+    <div class="stream-container">
+        <div id="twitch-embed3" class="hide"></div>
+        <script type="text/javascript">
+            var options3 = {
+                channel: "streamer3", // Replace with the third streamer's username
+                width: 700,
+                height: 500,
+                parent: ["localhost"] // Add your domain here
+            };
+            var player3 = new Twitch.Player("twitch-embed3", options3);
+            player3.addEventListener(Twitch.Player.READY, function() {
+                player3.addEventListener(Twitch.Player.ONLINE, function() {
+                    document.getElementById("twitch-embed3").classList.remove('hide');
+                });
+                player3.addEventListener(Twitch.Player.OFFLINE, function() {
+                    document.getElementById("twitch-embed3").classList.add('hide');
+                });
+            });
+        </script>
+    </div>
+</div>
+
+</body>
+</html>

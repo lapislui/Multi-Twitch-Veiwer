@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Twitch Streams</title>
+    <style>
+        .stream-container {
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+</head>
+<body>
+
+<div id="twitch-streams">
+    <!-- Channel 1 -->
+    <div class="stream-container">
+        <input type="text" id="channel1" placeholder="Enter channel name" />
+        <button onclick="changeChannel(1)">Change Channel</button>
+        <div id="twitch-embed1" class="hide"></div>
+        <script type="text/javascript">
+            var player1;
+            function initPlayer1(channel) {
+                var options = {
+                    channel: channel,
+                    width: 700,
+                    height: 500,
+                    parent: ["localhost"] // Add your domain here
+                };
+                player1 = new Twitch.Player("twitch-embed1", options);
+                player1.addEventListener(Twitch.Player.READY, function() {
+                    player1.addEventListener(Twitch.Player.ONLINE, function() {
+                        document.getElementById("twitch-embed1").classList.remove('hide');
+                    });
+                    player1.addEventListener(Twitch.Player.OFFLINE, function() {
+                        document.getElementById("twitch-embed1").classList.add('hide');
+                    });
+                });
+            }
+            initPlayer1("philza"); // default channel
+
+            function changeChannel(playerNumber) {
+                var channelInput = document.getElementById("channel" + playerNumber).value.trim();
+                if (channelInput) {
+                    if (playerNumber === 1) {
+                        player1.setChannel(channelInput);
+                    }
+                } else {
+                    alert("Please enter a valid channel name.");
+                }
+            }
+        </script>
+    </div>
+
+    <!-- Channel 2 -->
+    <div class="stream-container">
+        <input type="text" id="channel2" placeholder="Enter channel name" />
+        <button onclick="changeChannel(2)">Change Channel</button>
+        <div id="twitch-embed2" class="hide"></div>
+        <script type="text/javascript">
+            var player2;
+            function initPlayer2(channel) {
+                var options = {
+                    channel: channel,
+                    width: 700,
+                    height: 500,
+                    parent: ["localhost"] // Add your domain here
+                };
+                player2 = new Twitch.Player("twitch-embed2", options);
+                player2.addEventListener(Twitch.Player.READY, function() {
+                    player2.addEventListener(Twitch.Player.ONLINE, function() {
+                        document.getElementById("twitch-embed2").classList.remove('hide');
+                    });
+                    player2.addEventListener(Twitch.Player.OFFLINE, function() {
+                        document.getElementById("twitch-embed2").classList.add('hide');
+                    });
+                });
+            }
+            initPlayer2("faith"); // default channel
+
+            function changeChannel(playerNumber) {
+                var channelInput = document.getElementById("channel" + playerNumber).value.trim();
+                if (channelInput) {
+                    if (playerNumber === 2) {
+                        player2.setChannel(channelInput);
+                    }
+                } else {
+                    alert("Please enter a valid channel name.");
+                }
+            }
+        </script>
+    </div>
+
+    <!-- Channel 3 -->
+    <div class="stream-container">
+        <input type="text" id="channel3" placeholder="Enter channel name" />
+        <button onclick="changeChannel(3)">Change Channel</button>
+        <div id="twitch-embed3" class="hide"></div>
+        <script type="text/javascript">
+            var player3;
+            function initPlayer3(channel) {
+                var options = {
+                    channel: channel,
+                    width: 700,
+                    height: 500,
+                    parent: ["localhost"] // Add your domain here
+                };
+                player3 = new Twitch.Player("twitch-embed3", options);
+                player3.addEventListener(Twitch.Player.READY, function() {
+                    player3.addEventListener(Twitch.Player.ONLINE, function() {
+                        document.getElementById("twitch-embed3").classList.remove('hide');
+                    });
+                    player3.addEventListener(Twitch.Player.OFFLINE, function() {
+                        document.getElementById("twitch-embed3").classList.add('hide');
+                    });
+                });
+            }
+            initPlayer3("streamer3"); // default channel
+
+            function changeChannel(playerNumber) {
+                var channelInput = document.getElementById("channel" + playerNumber).value.trim();
+                if (channelInput) {
+                    if (playerNumber === 3) {
+                        player3.setChannel(channelInput);
+                    }
+                } else {
+                    alert("Please enter a valid channel name.");
+                }
+            }
+        </script>
+    </div>
+
+    <!-- Channel 4 -->
+    <div class="stream-container">
+        <input type="text" id="channel4" placeholder="Enter channel name" />
+        <button onclick="changeChannel(4)">Change Channel</button>
+        <div id="twitch-embed4" class="hide"></div>
+        <script type="text/javascript">
+            var player4;
+            function initPlayer4(channel) {
+                var options = {
+                    channel: channel,
+                    width: 700,
+                    height: 500,
+                    parent: ["localhost"] // Add your domain here
+                };
+                player4 = new Twitch.Player("twitch-embed4", options);
+                player4.addEventListener(Twitch.Player.READY, function() {
+                    player4.addEventListener(Twitch.Player.ONLINE, function() {
+                        document.getElementById("twitch-embed4").classList.remove('hide');
+                    });
+                    player4.addEventListener(Twitch.Player.OFFLINE, function() {
+                        document.getElementById("twitch-embed4").classList.add('hide');
+                    });
+                });
+            }
+            initPlayer4("streamer4"); // default channel
+
+            function changeChannel(playerNumber) {
+                var channelInput = document.getElementById("channel" + playerNumber).value.trim();
+                if (channelInput) {
+                    if (playerNumber === 4) {
+                        player4.setChannel(channelInput);
+                    }
+                } else {
+                    alert("Please enter a valid channel name.");
+                }
+            }
+        </script>
+    </div>
+
+    <!-- Channel 5 -->
+    <div class="stream-container">
+        <input type="text" id="channel5" placeholder="Enter channel name" />
+        <button onclick="changeChannel(5)">Change Channel</button>
+        <div id="twitch-embed5" class="hide"></div>
+        <script type="text/javascript">
+            var player5;
+            function initPlayer5(channel) {
+                var options = {
+                    channel: channel,
+                    width: 700,
+                    height: 500,
+                    parent: ["localhost"] // Add your domain here
+                };
+                player5 = new Twitch.Player("twitch-embed5", options);
+                player5.addEventListener(Twitch.Player.READY, function() {
+                    player5.addEventListener(Twitch.Player.ONLINE, function() {
+                        document.getElementById("twitch-embed5").classList.remove('hide');
+                    });
+                    player5.addEventListener(Twitch.Player.OFFLINE, function() {
+                        document.getElementById("twitch-embed5").classList.add('hide');
+                    });
+                });
+            }
+            initPlayer5("streamer5"); // default channel
+
+            function changeChannel(playerNumber) {
+                var channelInput = document.getElementById("channel" + playerNumber).value.trim();
+                if (channelInput) {
+                  	player5.setChannel(channelInput);
+              	} else { 
+                  	alert("Please enter a valid channel name."); 
+              	}
+          	}
+      	</script>
+  	</div>
+
+  	<!-- Channel 6 -->
+  	<div class="stream-container">
+      	<input type="text" id="channel6" placeholder="Enter channel name" />
+      	<button onclick="changeChannel(6)">Change Channel</button>
+      	<div id="twitch-embed6" class="hide"></div>
+      	<script type="text/javascript">
+          	var player6;
+          	function initPlayer6(channel) { 
+              	var options = { 
+                  	channel: channel, 
+                  	width: 700, 
+                  	height: 500, 
+                  	parent: ["localhost"] // Add your domain here 
+              	}; 
+              	player6 = new Twitch.Player("twitch-embed6", options); 
+              	player6.addEventListener(Twitch.Player.READY, function() { 
+                  	player6.addEventListener(Twitch.Player.ONLINE, function() { 
+                      	document.getElementById("twitch-embed6").classList.remove('hide'); 
+                  	}); 
+                  	player6.addEventListener(Twitch.Player.OFFLINE, function() { 
+                      	document.getElementById("twitch-embed6").classList.add('hide'); 
+                  	}); 
+              	}); 
+          	} 
+          	initPlayer6("streamer6"); // default channel 
+
+          	function changeChannel(playerNumber) { 
+              	var channelInput = document.getElementById("channel" + playerNumber).value.trim(); 
+              	if (channelInput) { 
+                  	player6.setChannel(channelInput); 
+              	} else { 
+                  	alert("Please enter a valid channel name."); 
+              	} 
+          	} 
+      	</script> 
+  	</div> 
+
+  	<!-- Channel 7 -->
+  	<div class="stream-container"> 
+      	<input type="text" id="channel7" placeholder="Enter channel name" /> 
+      	<button onclick="changeChannel(7)">Change Channel</button> 
+      	<div id="twitch-embed7" class="hide"></div> 
+      	<script type="text/javascript"> 
+          	var player7; 
+          	function initPlayer7(channel) { 
+              	var options = { 
+                  	channel: channel, 
+                  	width: 700, 
+                  	height: 500, 
+                  	parent: ["localhost"] // Add your domain here
+              	}; 
+              	player7 = new Twitch.Player("twitch-embed7", options); 
+              	player7.addEventListener(Twitch.Player.READY, function() { 
+                  	player7.addEventListener(Twitch.Player.ONLINE, function() { 
+                      	document.getElementById("twitch-embed7").classList.remove('hide');  
+                  	});  
+                  	player7.addEventListener(Twitch.Player.OFFLINE, function() {  
+                      	document.getElementById("twitch-embed7").classList.add('hide');  
+                  	});  
+              	});  
+          	}  
+          	initPlayer7("streamer7"); // default channel  
+
+          	function changeChannel(playerNumber) {  
+              	var channelInput = document.getElementById("channel" + playerNumber).value.trim();  
+              	if (channelInput) {  
+                  	player7.setChannel(channelInput);  
+              	} else {  
+                  	alert("Please enter a valid channel name.");  
+              	}  
+          	}  
+      	</script>  
+  	</div>  
+
+  	<!-- Channel 8 -->
+  	<div class="stream-container">   
+      	<input type="text" id="channel8" placeholder="Enter channel name" />   
+      	<button onclick="changeChannel(8)">Change Channel</button>   
+      	<div id="twitch-embed8" class="hide"></div>   
+      	<script type="text/javascript">   
+          	var player8;   
+          	function initPlayer8(channel) {   
+              	var options = {   
+                  	channel: channel,   
+                  	width: 700,   
+                  	height: 500,   
+                  	parent: ["localhost"] // Add your domain here   
+              	};   
+              	player8 = new Twitch.Player("twitch-embed8", options);   
+              	player8.addEventListener(Twitch.Player.READY, function() {   
+                  	player8.addEventListener(Twitch.Player.ONLINE, function() {   
+                      	document.getElementById("twitch-embed8").classList.remove('hide');   
+                  	});   
+                  	player8.addEventListener(Twitch.Player.OFFLINE, function() {   
+                      	document.getElementById("twitch-embed8").classList.add('hide');   
+                  	});   
+              	});   
+          	}   
+          	initPlayer8("streamer8"); // default channel   
+
+          	function changeChannel(playerNumber) {   
+              	var channelInput = document.getElementById("channel" + playerNumber).value.trim();   
+              	if (channelInput) {    
+                	player8.setChannel(channelInput);    
+              } else {    
+                	alert("Please enter a valid channel name.");    
+              }    
+          }    
+      </script>     
+   </div>     
+</div>     
+
+</body>     
+</html>   
