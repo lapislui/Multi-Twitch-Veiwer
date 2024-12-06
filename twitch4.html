@@ -18,10 +18,12 @@
     <script src="https://player.twitch.tv/js/embed/v1.js"></script>
 </head>
 <body>
-
+    <h1>Multi-Twitch Stream veiwer </h1>
+    <h2>enter channel name in the box and press change channel</h2>
+    <h1>NO-chat support currently </h1>
+    <p>xisuma,ChosenArchitect,tapl,
+        Xidik_UK</p>
 <div id="twitch-streams">
-    <p>NOchat support currently </p>
-<p>xisuma,ChosenArchitect</p>
     <!-- Channel 1 -->
     <div class="stream-container">
         <input type="text" id="channel1" placeholder="Enter channel name" />
@@ -101,6 +103,17 @@ function initPlayer(playerNumber, channel) {
         players[playerNumber].addEventListener(Twitch.Player.OFFLINE, function() {
             document.getElementById("twitch-embed" + playerNumber).classList.add('hide');
         });
+        
+        // Automatically check for stream status every few seconds
+        setInterval(function() {
+            players[playerNumber].getStatus(function(status) {
+                if (status === 'offline') {
+                    document.getElementById("twitch-embed" + playerNumber).classList.add('hide');
+                } else {
+                    document.getElementById("twitch-embed" + playerNumber).classList.remove('hide');
+                }
+            });
+        }, 2000); // Check every 5 seconds
     });
 }
 
@@ -109,10 +122,10 @@ initPlayer(1, "ChosenArchitect");
 initPlayer(2, "xisuma");
 initPlayer(3, "KookieKiku");
 initPlayer(4, "faith");
-initPlayer(5, "streamer5");
-initPlayer(6, "streamer6");
-initPlayer(7, "streamer7");
-initPlayer(8, "streamer8");
+initPlayer(5, "tapl");
+initPlayer(6, "Xidik_UK");
+initPlayer(7, "hannahxxrose");
+initPlayer(8, "wallibear");
 
 // Change channel function
 function changeChannel(playerNumber) {
@@ -127,5 +140,252 @@ function changeChannel(playerNumber) {
 }
 </script>
 
-</body>     
+</body>
+<style>
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 28px;
+    color: #9146ff;
+}
+
+h2 {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #1808f4;
+}
+
+h3 {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #6608f4;
+}
+
+p {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+/* Grid Container Styling */
+#twitch-streams {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-gap: 20px; /* Space between items */
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Stream Container Styling */
+.stream-container {
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stream-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Input and Button Styling */
+input[type="text"] {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    margin: 10px auto;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+button {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    background-color: #9146ff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #7326d3;
+}
+
+/* Embedded Player Styling */
+#twitch-embed1,
+#twitch-embed2,
+#twitch-embed3,
+#twitch-embed4,
+#twitch-embed5,
+#twitch-embed6,
+#twitch-embed7,
+#twitch-embed8 {
+    width: 700px; /* Matches player width */
+    height: 500px; /* Matches player height */
+    margin: 0 auto;
+    border: 2px solid #9146ff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    #twitch-streams {
+        grid-template-columns: 1fr; /* Switch to 1 column on smaller screens */
+    }
+
+    .stream-container {
+        width: 90%; /* Reduce width for smaller devices */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    input[type="text"], button {
+        font-size: 12px;
+    }
+}
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 28px;
+    color: #9146ff;
+}
+
+p {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+/* Grid Container Styling */
+#twitch-streams {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-gap: 20px; /* Space between items */
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Stream Container Styling */
+.stream-container {
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stream-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Input and Button Styling */
+input[type="text"] {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    margin: 10px auto;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+button {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    background-color: #9146ff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #7326d3;
+}
+
+/* Embedded Player Styling */
+#twitch-embed1,
+#twitch-embed2,
+#twitch-embed3,
+#twitch-embed4,
+#twitch-embed5,
+#twitch-embed6,
+#twitch-embed7,
+#twitch-embed8 {
+    width: 700px; /* Matches player width */
+    height: 500px; /* Matches player height */
+    margin: 0 auto;
+    border: 2px solid #9146ff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    #twitch-streams {
+        grid-template-columns: 1fr; /* Switch to 1 column on smaller screens */
+    }
+
+    .stream-container {
+        width: 90%; /* Reduce width for smaller devices */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    input[type="text"], button {
+        font-size: 12px;
+    }
+}
+
+</style>     
 </html>     
